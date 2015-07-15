@@ -1,6 +1,6 @@
-import os
+from unipath import Path
 
-BASE_DIR = os.path.dirname(os.path.dirname(__file__))
+BASE_DIR = Path(__file__).ancestor(3)
 
 SECRET_KEY = 'kq7jpv5*5-s1_3f*+on&21$9b1xe63toa@bwae73lfc(25u6&('
 
@@ -13,7 +13,9 @@ DJANGO_APPS = (
     'django.contrib.staticfiles',
 )
 
-LOCAL_APPS = ()
+LOCAL_APPS = (
+    'apps.home',
+)
 
 THIRD_PARTY_APPS = ()
 
@@ -42,3 +44,5 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
+
+TEMPLATE_DIRS = [BASE_DIR.child('templates')]
